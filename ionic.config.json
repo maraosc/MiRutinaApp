@@ -1,0 +1,7 @@
+{
+  "name": "MiRutinaApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
