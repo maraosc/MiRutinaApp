@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let habito of habitos">
+        <ion-card>
+          <img [src]="habito.imagen" alt="{{ habito.nombre }}" />
+          <ion-card-content>
+            <h3>{{ habito.nombre }}</h3>
+
+            <ion-button
+              expand="block"
+              [fill]="habito.completado ? 'solid' : 'outline'"
+              [color]="habito.completado ? 'success' : 'medium'"
+              (click)="marcarComoCompletado(habito)">
+              {{ habito.completado ? '✔ Completado' : 'Marcar como hecho' }}
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- FAB para agregar hábito -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="agregarHabito()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

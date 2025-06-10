@@ -1,0 +1,55 @@
+<div class="registro-container">
+  <!-- Logo -->
+  <div class="logo-container">
+    <img src="../assets/logo.png" alt="Logo Mi Rutina App" class="logo-img" />
+  </div>
+
+  <!-- Título -->
+  <h2 class="page-title">Crea tu cuenta</h2>
+
+  <!-- Formulario -->
+  <form class="registro-form" #form="ngForm">
+    <!-- Nombre -->
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Tu nombre" [(ngModel)]="nombre" name="nombre" required>
+    </mat-form-field>
+
+    <!-- Correo -->
+    <mat-form-field appearance="fill">
+      <mat-label>Correo electrónico</mat-label>
+      <input matInput type="email" placeholder="tu@email.com" [(ngModel)]="email" name="email" required>
+    </mat-form-field>
+
+    <!-- Fecha de nacimiento -->
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="fechaNacimiento" name="fechaNacimiento" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Objetivo -->
+    <mat-form-field appearance="fill">
+      <mat-label>Objetivo principal</mat-label>
+      <mat-select [(ngModel)]="objetivo" name="objetivo" required>
+        <mat-option value="salud">Mejorar salud</mat-option>
+        <mat-option value="productividad">Aumentar productividad</mat-option>
+        <mat-option value="organización">Organizar mi día</mat-option>
+        <mat-option value="otros">Otros</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Botón -->
+    <button mat-raised-button color="primary" [disabled]="form.invalid">
+      Registrarse
+    </button>
+  </form>
+</div>
+
+<!-- Enlace para volver al login -->
+<div style="text-align: center; margin-top: 16px;">
+  <ion-text>
+    <a [routerLink]="['/login']">¿Ya tienes cuenta? Inicia sesión</a>
+  </ion-text>
+</div>

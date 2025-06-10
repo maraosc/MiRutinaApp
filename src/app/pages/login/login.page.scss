@@ -1,0 +1,64 @@
+// Fondo transparente para mostrar el diseño de fondo completo
+ion-content {
+  --background: transparent !important;
+  background: transparent !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // Centra el contenido verticalmente
+}
+
+// Estilo para el contenedor del logo
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+
+  img.logo {
+    width: 300px;
+  }
+}
+
+// Tarjeta del formulario (ion-card)
+ion-card {
+  margin: 0 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Sombra suave
+  background-color: rgba(255, 255, 255, 0.8); // Fondo blanco semitransparente
+  backdrop-filter: blur(6px); // Desenfoque de fondo para efecto "glass"
+}
+
+// Título centrado y color tierra
+ion-card-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #5c4d3d; // Café suave
+}
+
+// Estilos para cada ítem del formulario (input)
+ion-item {
+  --background: transparent;
+  --border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+// Padding interno de los inputs
+ion-input {
+  --padding-start: 10px;
+}
+
+// Botón de login
+ion-button {
+  margin-top: 16px;
+  --background: #a2836e; // Color café claro
+  --border-radius: 12px;
+}
+
+// Enlaces inferiores: recuperar contraseña y registrarse
+ion-text a {
+  color: #7a624f; // Otro tono compatible con el fondo
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+ion-text a:hover {
+  text-decoration: underline; // Subrayado al pasar el mouse
+}

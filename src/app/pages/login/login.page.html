@@ -1,0 +1,39 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!-- Imagen del logo -->
+  <div class="logo-container" style="text-align: center; margin-bottom: 20px;">
+    <img src="../assets/logo.png" alt="Logo" class="logo" style="width: 200px;">
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="text-align: center;">Iniciar Sesión</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input [(ngModel)]="email" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input [(ngModel)]="password" type="password"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" (click)="login()">Iniciar Sesión</ion-button>
+
+      <ion-text color="danger" *ngIf="mensaje">
+        <p class="ion-padding-top">{{ mensaje }}</p>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Enlaces opcionales -->
+<div style="text-align: center; margin-top: 12px;">
+  <ion-text><a href="#">¿Olvidaste tu contraseña?</a></ion-text><br>
+  <ion-text><a [routerLink]="['/registro']">¿No tienes cuenta? Regístrate</a></ion-text>
+</div>
+
+</ion-content>
+

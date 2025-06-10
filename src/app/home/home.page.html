@@ -1,20 +1,41 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!-- Saludo -->
+  <h2>¡Hola, {{ user }}!</h2>
+  <p>Este es tu resumen de hoy:</p>
+
+  <!-- Tarjeta de Tareas -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Resumen de Tareas</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Total: <strong>{{ totalTareas }}</strong></p>
+      <p>Completadas: <strong>{{ tareasCompletadas }}</strong></p>
+      <ion-progress-bar [value]="porcentajeTareas" color="success"></ion-progress-bar>
+      <p>{{ (porcentajeTareas * 100) | number:'1.0-0' }}% completado</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Tarjeta de Hábitos -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Resumen de Hábitos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Total: <strong>{{ totalHabitos }}</strong></p>
+      <p>Cumplidos hoy: <strong>{{ habitosCumplidos }}</strong></p>
+      <ion-progress-bar [value]="porcentajeHabitos" color="tertiary"></ion-progress-bar>
+      <p>{{ (porcentajeHabitos * 100) | number:'1.0-0' }}% cumplido</p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
