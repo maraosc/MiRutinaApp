@@ -28,7 +28,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.porcentajeTareas = this.tareasCompletadas / this.totalTareas;
     this.porcentajeHabitos = this.habitosCumplidos / this.totalHabitos;
-    this.menu.close();
+    this.menu.enable(true);
   }
 }
 

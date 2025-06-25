@@ -42,7 +42,52 @@ ion-app {
   background-size: cover;
 }
 
-ion-content {
-  --background: transparent !important;
-  background: transparent !important;
+html, body {
+  --mat-select-panel-background-color: #7a624f;
+}
+
+.mat-select-panel {
+  background-color: #7a624f !important;
+  color: white !important;
+  border-radius: 12px !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.mat-option {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  padding: 10px 16px !important;
+}
+
+.mat-option .mat-option-text {
+  color: white !important;
+}
+
+.mat-option:hover {
+  background-color: #5b4639 !important;
+}
+
+.mat-option:hover .mat-option-text {
+  color: white !important;
+}
+
+.mat-option.mat-selected,
+.mat-option.mat-selected .mat-option-text {
+  background-color: #0e305d !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.mat-select-value,
+.mat-select-value-text {
+  color: white !important;
+}
+
+.mat-select-arrow {
+  color: white !important;
+}
+
+.mat-form-field-label,
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: white !important;
 }

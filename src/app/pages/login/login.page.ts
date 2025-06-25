@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +17,11 @@ export class LoginPage {
 
   constructor(
     private router: Router,
-    private alertController: AlertController
-  ) { }
+    private alertController: AlertController,
+    private authService: AuthServiceService
+  ) {}
 
-  //Método para mostrar alerta de error
+  // Método para mostrar alerta de error
   async mostrarAlertaError(mensaje: string) {
     const alert = await this.alertController.create({
       header: 'Error',
@@ -31,36 +32,42 @@ export class LoginPage {
     await alert.present();
   }
 
-  //Función para validar el formato de email
+  // Función para validar el formato de email
   validarEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular para validar el formato de email
-    // Verifica si el email cumple con el formato
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
 
-  //Método login
-  login() {
-    // Validar campos vacíos
+  // Método login
+  async login() {
     if (!this.email || !this.password) {
       this.mostrarAlertaError('Por favor, completa todos los campos.');
       return;
     }
 
-    // Validar formato de email
     if (!this.validarEmail(this.email)) {
       this.mostrarAlertaError('Por favor, ingresa un email válido.');
       return;
     }
 
-    //Validar longitud de contraseña
     if (this.password.length < 4) {
       this.mostrarAlertaError('La contraseña debe tener al menos 4 caracteres.');
       return;
     }
 
-    // Si la autenticación es exitosa, redirigir al usuario a la página principal
-    this.router.navigate(['/home'], { state: { user: this.email } });
+    try {
+      // Intentar autenticar con SQLite
+      const usuario = await this.authService.loginUser(this.email, this.password);
 
+      // Guardar el email en localStorage
+      localStorage.setItem('user', usuario.email);
+
+      // Redirigir al home con el nombre
+      this.router.navigate(['/home'], { state: { user: usuario.nombre } });
+
+    } catch (error) {
+      // Mostrar alerta en caso de error
+      this.mostrarAlertaError('Usuario o contraseña incorrectos.');
+    }
   }
-
 }

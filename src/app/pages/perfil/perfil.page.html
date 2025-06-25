@@ -3,35 +3,38 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-title>Mi Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
   <!-- Foto de perfil -->
-  <div class="perfil-container">
+  <div class="perfil-container" style="text-align: center;">
     <img src="../assets/perfil.png" alt="Foto de perfil" class="foto-perfil" />
-    <h2 class="nombre-usuario">Matías Araos</h2>
-    <p class="correo-usuario">matias&#64;gmail.com</p>
+    <h2 class="nombre-usuario">{{ user?.nombre }}</h2>
+    <p class="correo-usuario">{{ user?.email }}</p>
   </div>
 
   <!-- Información adicional -->
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Información</ion-card-title>
+      <ion-card-title>Información personal</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-item>
         <ion-label>Edad</ion-label>
-        <ion-text>24 años</ion-text>
+        <ion-text>{{ edad }} años</ion-text>
       </ion-item>
+
       <ion-item>
-        <ion-label>Ubicación</ion-label>
-        <ion-text>Antofagasta, Chile</ion-text>
+        <ion-label>Fecha de nacimiento</ion-label>
+        <ion-text>{{ user?.fecha_nacimiento | date: 'dd/MM/yyyy' }}</ion-text>
       </ion-item>
+
       <ion-item>
         <ion-label>Objetivo</ion-label>
-        <ion-text>Crear buenos hábitos diarios</ion-text>
+        <ion-text>{{ user?.objetivo_principal }}</ion-text>
       </ion-item>
     </ion-card-content>
   </ion-card>

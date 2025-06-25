@@ -21,13 +21,20 @@
       <input matInput type="email" placeholder="tu@email.com" [(ngModel)]="email" name="email" required>
     </mat-form-field>
 
-    <!-- Fecha de nacimiento -->
-    <mat-form-field appearance="fill">
-      <mat-label>Fecha de nacimiento</mat-label>
-      <input matInput [matDatepicker]="picker" [(ngModel)]="fechaNacimiento" name="fechaNacimiento" required>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+    <!-- Contraseña -->
+    <mat-form-field appearance="fill">  
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" placeholder="Tu contraseña" [(ngModel)]="password" name="contrasena" required>
     </mat-form-field>
+
+    <!-- Fecha de nacimiento -->
+<mat-form-field appearance="fill" style="background-color: white; border-radius: 12px;">
+  <mat-label>Fecha de nacimiento</mat-label>
+  <input matInput [matDatepicker]="picker" [(ngModel)]="fechaNacimiento" name="fechaNacimiento" required>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
 
     <!-- Objetivo -->
     <mat-form-field appearance="fill">
@@ -41,9 +48,9 @@
     </mat-form-field>
 
     <!-- Botón -->
-    <button mat-raised-button color="primary" [disabled]="form.invalid">
-      Registrarse
-    </button>
+  <ion-button expand="block" color="primary" (click)="guardarUsuario()">
+  Registrarse
+  </ion-button>
   </form>
 </div>
 

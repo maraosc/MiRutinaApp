@@ -116,11 +116,75 @@ mat-form-field {
 
 // Enlaces inferiores: recuperar contraseña y registrarse
 ion-text a {
-  color: #7a624f; // Otro tono compatible con el fondo
+  color: #7a624f; // Color marrón claro
   text-decoration: none;
   font-size: 0.9rem;
 }
 
 ion-text a:hover {
   text-decoration: underline; // Subrayado al pasar el mouse
+}
+::ng-deep .mat-datepicker-content {
+  background-color: #7a624f !important;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  color: white !important;
+}
+
+::ng-deep .mat-calendar {
+  background-color: #7a624f !important;
+  color: white !important;
+}
+
+::ng-deep .mat-calendar-body,
+::ng-deep .mat-calendar-table,
+::ng-deep .mat-calendar-table-header,
+::ng-deep .mat-calendar-body-cell {
+  color: white !important;
+}
+
+::ng-deep .mat-calendar-body-cell-content {
+  border-radius: 50%;
+  color: white !important;
+  transition: background-color 0.3s ease;
+}
+
+::ng-deep .mat-calendar-body-selected {
+  background-color: #0e305d !important;
+  color: white !important;
+}
+
+::ng-deep .mat-calendar-period-button,
+::ng-deep .mat-calendar-previous-button,
+::ng-deep .mat-calendar-next-button {
+  color: white !important;
+}
+
+::ng-deep .mat-select-panel {
+  background-color: #7a624f !important;
+  color: white !important;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+::ng-deep .mat-option {
+  color: white !important;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 10px 16px;
+  transition: background-color 0.3s ease;
+}
+
+::ng-deep .mat-option:hover {
+  background-color: #634d3f !important;
+}
+
+::ng-deep .mat-option.mat-selected {
+  background-color: #0e305d !important; 
+  color: white !important;
+  font-weight: 600;
+}
+
+::ng-deep .mat-option .mat-option-text {
+  color: white !important;
 }
