@@ -39,35 +39,36 @@ export class LoginPage {
   }
 
   // Método login
-  async login() {
-    if (!this.email || !this.password) {
-      this.mostrarAlertaError('Por favor, completa todos los campos.');
-      return;
-    }
-
-    if (!this.validarEmail(this.email)) {
-      this.mostrarAlertaError('Por favor, ingresa un email válido.');
-      return;
-    }
-
-    if (this.password.length < 4) {
-      this.mostrarAlertaError('La contraseña debe tener al menos 4 caracteres.');
-      return;
-    }
-
-    try {
-      // Intentar autenticar con SQLite
-      const usuario = await this.authService.loginUser(this.email, this.password);
-
-      // Guardar el email en localStorage
-      localStorage.setItem('user', usuario.email);
-
-      // Redirigir al home con el nombre
-      this.router.navigate(['/home'], { state: { user: usuario.nombre } });
-
-    } catch (error) {
-      // Mostrar alerta en caso de error
-      this.mostrarAlertaError('Usuario o contraseña incorrectos.');
-    }
+async login() {
+  if (!this.email || !this.password) {
+    this.mostrarAlertaError('Por favor, completa todos los campos.');
+    return;
   }
+
+  if (!this.validarEmail(this.email)) {
+    this.mostrarAlertaError('Por favor, ingresa un email válido.');
+    return;
+  }
+
+  if (this.password.length < 4) {
+    this.mostrarAlertaError('La contraseña debe tener al menos 4 caracteres.');
+    return;
+  }
+
+  try {
+    const usuario = await this.authService.loginUser(this.email, this.password);
+
+    //
+    //Guarda el nombre del usuario
+    localStorage.setItem('nombre', usuario.nombre);
+
+    this.router.navigate(['/home'], {
+  state: { refrescar: true }  
+});
+
+  } catch (error) {
+    this.mostrarAlertaError('Usuario o contraseña incorrectos.');
+  }
+}
+
 }

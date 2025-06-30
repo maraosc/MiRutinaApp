@@ -70,19 +70,19 @@ async init() {
 }
 
   // Obtener hábitos por fecha y usuario
-  async obtenerHabitosPorFecha(fecha: string, userId: number): Promise<any[]> {
-    if (!this.dbInstance) return [];
+async obtenerHabitosPorFecha(fecha: string, userId: number): Promise<any[]> {
+  if (!this.dbInstance) return [];
 
-    const sql = `SELECT * FROM habitos WHERE fecha = ? AND user_id = ?`;
-    const res = await this.dbInstance.executeSql(sql, [fecha, userId]);
+  const sql = `SELECT * FROM habitos WHERE fecha = ? AND user_id = ?`;
+  const res = await this.dbInstance.executeSql(sql, [fecha, userId]);
 
-    const resultados: any[] = [];
-    for (let i = 0; i < res.rows.length; i++) {
-      resultados.push(res.rows.item(i));
-    }
-
-    return resultados;
+  const resultados: any[] = [];
+  for (let i = 0; i < res.rows.length; i++) {
+    resultados.push(res.rows.item(i));
   }
+  return resultados;
+}
+
 
 // Actualizar estado (completado = 1 o 0)
 async actualizarEstadoHabito(id: number, completado: number) {

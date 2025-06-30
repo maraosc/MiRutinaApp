@@ -11,21 +11,8 @@
   <h2 class="slide-in delay-0">¡Hola, {{ user }}!</h2>
   <p class="slide-in delay-1">Este es tu resumen de hoy:</p>
 
-  <!-- Tarjeta de Tareas -->
-  <ion-card class="slide-in delay-2">
-    <ion-card-header>
-      <ion-card-title>Resumen de Tareas</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>Total: <strong>{{ totalTareas }}</strong></p>
-      <p>Completadas: <strong>{{ tareasCompletadas }}</strong></p>
-      <ion-progress-bar [value]="porcentajeTareas" color="success"></ion-progress-bar>
-      <p>{{ (porcentajeTareas * 100) | number:'1.0-0' }}% completado</p>
-    </ion-card-content>
-  </ion-card>
-
-  <!-- Tarjeta de Hábitos -->
-  <ion-card class="slide-in delay-3">
+  <!-- Tarjeta de Hábitos si hay hábitos -->
+  <ion-card class="slide-in delay-3" *ngIf="totalHabitos > 0">
     <ion-card-header>
       <ion-card-title>Resumen de Hábitos</ion-card-title>
     </ion-card-header>
@@ -34,6 +21,13 @@
       <p>Cumplidos hoy: <strong>{{ habitosCumplidos }}</strong></p>
       <ion-progress-bar [value]="porcentajeHabitos" color="tertiary"></ion-progress-bar>
       <p>{{ (porcentajeHabitos * 100) | number:'1.0-0' }}% cumplido</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Mensaje si no hay hábitos -->
+  <ion-card *ngIf="totalHabitos === 0" class="slide-in delay-2">
+    <ion-card-content>
+      <p>No tienes hábitos registrados para hoy.</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

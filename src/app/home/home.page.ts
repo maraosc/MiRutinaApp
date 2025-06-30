@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { HabitoService } from '../services/habito.service';
+import { AuthServiceService } from '../services/auth-service.service';
 
 @Component({
   selector: 'app-home',
@@ -8,27 +8,34 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./home.page.scss'],
   standalone: false,
 })
-export class HomePage implements OnInit {
-
+export class HomePage {
   user: string = '';
+  totalHabitos: number = 0;
+  habitosCumplidos: number = 0;
+  porcentajeHabitos: number = 0;
+  fechaHoy: string = '';
 
-  totalTareas = 5;
-  tareasCompletadas = 3;
-  porcentajeTareas = 0;
+  constructor(
+    private habitoService: HabitoService,
+    private authService: AuthServiceService
+  ) {}
 
-  totalHabitos = 4;
-  habitosCumplidos = 2;
-  porcentajeHabitos = 0;
-
-  constructor(private router: Router, private menu: MenuController) {
-    const nav = history.state;
-    this.user = nav.user || localStorage.getItem('usuario') || 'Invitado';
+  async ionViewWillEnter() {
+    await this.cargarResumenHabitos();
   }
 
-  ngOnInit() {
-    this.porcentajeTareas = this.tareasCompletadas / this.totalTareas;
-    this.porcentajeHabitos = this.habitosCumplidos / this.totalHabitos;
-    this.menu.enable(true);
+  async cargarResumenHabitos() {
+    this.user = localStorage.getItem('nombre') || 'Invitado';
+    this.fechaHoy = new Date().toISOString().split('T')[0];
+
+    const userId = this.authService.getUserId();
+    const habitos = await this.habitoService.obtenerHabitosPorFecha(this.fechaHoy, userId);
+
+    this.totalHabitos = habitos.length;
+    this.habitosCumplidos = habitos.filter(h => h.completado === 1).length;
+
+    this.porcentajeHabitos = this.totalHabitos > 0
+      ? this.habitosCumplidos / this.totalHabitos
+      : 0;
   }
 }
-

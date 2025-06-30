@@ -52,25 +52,26 @@ export class AuthServiceService {
       return false;
     }
   }
-
-  async loginUser(email: string, password: string): Promise<any> {
-    try {
-      const sql = `
-        SELECT * FROM users WHERE email = ? AND password = ?
-      `;
-      const result = await this.dbInstance.executeSql(sql, [email, password]);
-      if (result.rows.length > 0) {
-        const user = result.rows.item(0);
-        this.userId = user.id; // Guardar el ID del usuario logueado
-        return user;
-      } else {
-        throw new Error('Usuario o contraseña incorrectos');
-      }
-    } catch (error) {
-      console.error('Error al iniciar sesión:', error);
-      throw error;
+async loginUser(email: string, password: string): Promise<any> {
+  try {
+    const sql = `
+      SELECT * FROM users WHERE email = ? AND password = ?
+    `;
+    const result = await this.dbInstance.executeSql(sql, [email, password]);
+    if (result.rows.length > 0) {
+      const user = result.rows.item(0);
+      this.userId = user.id; // Guardar el ID del usuario logueado
+      localStorage.setItem('nombre', user.nombre); // Guardar nombre para usar en el Home
+      return user;
+    } else {
+      throw new Error('Usuario o contraseña incorrectos');
     }
+  } catch (error) {
+    console.error('Error al iniciar sesión:', error);
+    throw error;
   }
+}
+
 
   async getUserByEmail(email: string): Promise<any> {
     try {
