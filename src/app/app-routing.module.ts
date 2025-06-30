@@ -28,9 +28,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   },
   {
+    path: 'agregar-habito/:fecha',
+    loadChildren: () => import('./pages/agregar-habito/agregar-habito.module').then( m => m.AgregarHabitoPageModule)
+  },
+    {
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
-  }
+  },
+
 ];
 
 

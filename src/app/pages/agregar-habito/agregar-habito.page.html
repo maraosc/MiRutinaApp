@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Agregar Hábito</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/habitos"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Campo: Nombre del hábito -->
+  <ion-item>
+    <ion-label position="floating">Nombre del hábito</ion-label>
+    <ion-input [(ngModel)]="nombre" required></ion-input>
+  </ion-item>
+
+  <!-- Previsualización de imagen -->
+  <div class="imagen-container" *ngIf="imagen">
+    <img [src]="imagen" alt="Imagen seleccionada" class="imagen-preview" />
+  </div>
+
+  <!-- Botón para seleccionar imagen -->
+  <ion-button expand="block" (click)="seleccionarImagen()">
+    Seleccionar imagen (galería o cámara)
+  </ion-button>
+
+  <!-- Botón para guardar hábito -->
+  <ion-button expand="block" color="success" (click)="guardar()">
+    Guardar Hábito
+  </ion-button>
+
+</ion-content>
