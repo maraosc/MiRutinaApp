@@ -3,8 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+    wger: {
+    baseUrl: 'https://wger.de/api/v2',
+    apiKey: '62335f2b7aab3ef469ea84b8e2601502537bb3df'
+  }
+
 };
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file

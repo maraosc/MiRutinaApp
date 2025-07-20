@@ -1,8 +1,11 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Requerido por Angular Material
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+
+
 
 // Angular Material Modules
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -43,10 +46,12 @@ export const MY_DATE_FORMATS: MatDateFormats = {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    HttpClientModule, 
     BrowserModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+
 
     // Material modules
     MatFormFieldModule,

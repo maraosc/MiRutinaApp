@@ -31,7 +31,12 @@ const routes: Routes = [
     path: 'agregar-habito/:fecha',
     loadChildren: () => import('./pages/agregar-habito/agregar-habito.module').then( m => m.AgregarHabitoPageModule)
   },
-    {
+    
+  {
+    path: 'rutinas',
+    loadChildren: () => import('./pages/rutinas/rutinas.module').then( m => m.RutinasPageModule)
+  },
+{
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
   },

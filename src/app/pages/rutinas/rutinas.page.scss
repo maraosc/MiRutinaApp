@@ -1,0 +1,21 @@
+/* rutinas.page.scss */
+
+/* Espacio entre cards */
+.rutina-card {
+  margin-bottom: 12px;
+}
+
+/* Ajustes de tipografía para mobile */
+ion-card-title {
+  font-size: 1.1rem;
+}
+
+ion-card-content p {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+/* Asegura buen padding en los items */
+ion-item {
+  --inner-padding-end: 0; /* Opcional, para compactar */
+}
