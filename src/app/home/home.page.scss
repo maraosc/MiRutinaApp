@@ -1,5 +1,29 @@
+:host {
+  display: block;
+  background: url('/assets/fondo.png') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fef7ed; /* color de respaldo */
+}
+
 ion-content {
   --background: transparent;
+}
+
+
+ion-toolbar {
+  --background: rgba(255, 255, 255, 0.95);
+  --color: #6b4f38;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+ion-header {
+  --background: rgba(255, 255, 255, 0.9);
+  --color: #5c4d3d; /* Café suave */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 h2 {

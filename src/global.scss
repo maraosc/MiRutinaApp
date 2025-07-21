@@ -42,6 +42,12 @@ ion-app {
   background-size: cover;
 }
 
+ion-router-outlet,
+ion-page {
+  background: transparent !important;
+}
+
+
 html, body {
   --mat-select-panel-background-color: #7a624f;
 }

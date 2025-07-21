@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HabitoService } from '../services/habito.service';
 import { AuthServiceService } from '../services/auth-service.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -17,11 +18,13 @@ export class HomePage {
 
   constructor(
     private habitoService: HabitoService,
-    private authService: AuthServiceService
+    private authService: AuthServiceService,
+    private menuCtrl: MenuController 
   ) {}
 
   async ionViewWillEnter() {
     await this.cargarResumenHabitos();
+    this.menuCtrl.enable(true);
   }
 
   async cargarResumenHabitos() {

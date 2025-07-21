@@ -1,11 +1,15 @@
-// Fondo transparente para mostrar el diseño de fondo completo
-ion-content {
-  --background: transparent !important;
-  background: transparent !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; // Centra el contenido verticalmente
+:host {
+  background: url('/assets/fondo.png') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  /* este color solo se ve si la imagen no carga o no cubre toda el área */
+  background-color: #efe8de;
 }
+
+ion-content {
+  --background: transparent;
+}
+
 
 // Estilo para el contenedor del logo
 .logo-container {
